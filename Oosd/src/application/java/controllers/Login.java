@@ -6,11 +6,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import application.java.models.Utente;
+import application.java.DAO.UtenteDAO;
 import java.io.IOException;
 
 //import application.java.Main;
 public class Login {
+	Utente utente = new Utente();
+	Utente utenteLoggato = new Utente();
+	UtenteDAO utenteDAO = new UtenteDAO();
 
     public Login() {
 
@@ -27,13 +37,22 @@ public class Login {
 
 
 
-    public void userLogin(ActionEvent event) throws IOException {
-        checkLogin();
-
+    public void userLogin(ActionEvent event) throws IOException, SQLException {
+    	checkLogin();
     }
 
-    private void checkLogin() throws IOException {
-    	wrongLogin.setText("Lo facciamo domani il Login XD");
+    private void checkLogin() throws IOException, SQLException  {
+    	utente = new Utente(username.getText().toString(), password.getText().toString());
+    	utenteLoggato = utenteDAO.login(utente);
+    	if (utenteLoggato != null) {
+    		wrongLogin.setText("Login riuscito");
+    		
+    	}
+    	else {
+    		wrongLogin.setText("Login fallito");
+    		username.setText("");
+    		password.setText("");
+    	}
 //        Main m = new Main();
     }
 
