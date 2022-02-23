@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1208.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="137.0" prefWidth="1208.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="160.0" fitWidth="200.0">
+               <image>
+                  <Image url="@../images/Logo.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="473.0" layoutY="24.0" prefHeight="112.0" prefWidth="262.0" style="-fx-font-family: Sans-Serif; -fx-font-size: 22;" text="Autonoleggio Di Bernardo" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

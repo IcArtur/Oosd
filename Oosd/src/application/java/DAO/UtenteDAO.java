@@ -51,9 +51,35 @@ public class UtenteDAO extends DAO {
 	    else {
 	    	utente = null;
 	    }
-	    
 	    disconnect(jdbcConnection);
-	     
 	    return utente;
 	}
+	public boolean registerUtente(Utente utente) throws SQLException {
+		Connection jdbcConnection = connect();
+    	PreparedStatement checkstatement = jdbcConnection.prepareStatement("SELECT * from utenti WHERE username = ?");
+		checkstatement.setString (1, utente.getUsername());
+		ResultSet rs = checkstatement.executeQuery();
+		Long pkUtente = (long) 0;
+		boolean rowInserted = false; 
+		
+		if (rs.next()) {
+			//Implementare errore "Utente gia esistente"
+		}
+		else {
+			String query = "INSERT INTO utenti (username, password, nome, cognome, email, codiceFiscale, isAdmin, isOperator) "
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+			PreparedStatement statement = jdbcConnection.prepareStatement(query);
+			statement.setString (1, utente.getUsername());
+			statement.setString (2, utente.getPassword());
+			statement.setString (3, utente.getNome());
+			statement.setString (4, utente.getCognome());
+			statement.setString (5, utente.getEmail());
+			statement.setString (6, utente.getCodiceFiscale());
+			statement.setBoolean(7, utente.isAdmin());
+			statement.setBoolean(8, utente.isOperator());
+			rowInserted = statement.executeUpdate() > 0;
+		}
+		disconnect(jdbcConnection);
+        return rowInserted;
+    }
 }

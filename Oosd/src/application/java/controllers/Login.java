@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import application.java.models.Utente;
+import application.java.Main;
 import application.java.DAO.UtenteDAO;
 import java.io.IOException;
 
@@ -29,6 +30,8 @@ public class Login {
     @FXML
     private Button button;
     @FXML
+    private Button register;
+    @FXML
     private Label wrongLogin;
     @FXML
     private TextField username;
@@ -42,11 +45,12 @@ public class Login {
     }
 
     private void checkLogin() throws IOException, SQLException  {
+    	Main m = new Main();
     	utente = new Utente(username.getText().toString(), password.getText().toString());
     	utenteLoggato = utenteDAO.login(utente);
     	if (utenteLoggato != null) {
     		wrongLogin.setText("Login riuscito");
-    		
+    		m.changeScene("/application/resources/view/Homepage.fxml", "Homepage");
     	}
     	else {
     		wrongLogin.setText("Login fallito");
