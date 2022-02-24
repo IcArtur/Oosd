@@ -19,8 +19,9 @@ import application.java.DAO.UtenteDAO;
 
 import java.io.IOException;
 
-//import application.java.Main;
+
 public class Login {
+//	Dichiarazioni di variabili globali
 	Utente utente = new Utente();
 	Utente utenteLoggato = new Utente();
 	UtenteDAO utenteDAO = new UtenteDAO();
@@ -28,7 +29,7 @@ public class Login {
 
     public Login() {
     }
-
+//	Variabili JavaFX
     @FXML
     private Button button;
     @FXML
@@ -41,13 +42,8 @@ public class Login {
     private PasswordField password;
 
 
-
+//  Metodo che gestisce il click del Button per la login
     public void userLogin(ActionEvent event) throws IOException, SQLException {
-    	checkLogin();
-    }
-
-    private void checkLogin() throws IOException, SQLException  {
-    	
     	utente = new Utente(username.getText().toString(), password.getText().toString());
     	utenteLoggato = utenteDAO.login(utente);
     	if (utenteLoggato != null) {
@@ -60,7 +56,7 @@ public class Login {
     		password.setText("");
     	}
     }
-    
+//  Metodo che gestisce il cambio di scena per la registrazione
     public void registerScene(MouseEvent event) throws IOException {
     	m.changeScene("/application/resources/view/Registrazione.fxml", "Registrazione");
     }

@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import application.java.models.Utente;
 import java.sql.Connection;
 
+
 public class UtenteDAO extends DAO {
 	
+//	Metodo che dato in input un Utente controlla se le credenziali sono
+//	corrette sul DB e ritorna l'utente completo di dati
 	public Utente login(Utente utente) throws SQLException {
 	    	
 	    String sql = "select * from utenti where username=? and password=? ";
@@ -54,6 +57,9 @@ public class UtenteDAO extends DAO {
 	    disconnect(jdbcConnection);
 	    return utente;
 	}
+	
+//	Metodo che dato in input un Utente lo registra sul DB
+//	e ritorna vero se tutto va a buon fine
 	public boolean registerUtente(Utente utente) throws SQLException {
 		Connection jdbcConnection = connect();
     	PreparedStatement checkstatement = jdbcConnection.prepareStatement("SELECT * from utenti WHERE username = ?");

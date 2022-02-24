@@ -11,7 +11,8 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Stage stg;
-
+    
+//	Inizio dell'applicazione 
     @Override
     public void start(Stage primaryStage) throws Exception{
         stg = primaryStage;
@@ -20,7 +21,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-
+//	Metodo utile per il cambio di scena in altre classi
     public void changeScene(String fxml, String title) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource(fxml));
     	stg.setTitle(title);
