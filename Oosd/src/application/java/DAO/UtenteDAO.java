@@ -66,7 +66,7 @@ public class UtenteDAO extends DAO {
 			//Implementare errore "Utente gia esistente"
 		}
 		else {
-			String query = "INSERT INTO utenti (username, password, nome, cognome, email, codiceFiscale, isAdmin, isOperator) "
+			String query = "INSERT INTO utenti (username, password, nome, cognome, email, codice_fiscale, is_admin, is_operator) "
 					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement statement = jdbcConnection.prepareStatement(query);
 			statement.setString (1, utente.getUsername());
@@ -75,8 +75,8 @@ public class UtenteDAO extends DAO {
 			statement.setString (4, utente.getCognome());
 			statement.setString (5, utente.getEmail());
 			statement.setString (6, utente.getCodiceFiscale());
-			statement.setBoolean(7, utente.isAdmin());
-			statement.setBoolean(8, utente.isOperator());
+			statement.setInt(7, 0);
+			statement.setInt(8, 0);
 			rowInserted = statement.executeUpdate() > 0;
 		}
 		disconnect(jdbcConnection);

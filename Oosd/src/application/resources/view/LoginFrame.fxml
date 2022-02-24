@@ -31,6 +31,8 @@
             <PasswordField id="Password" fx:id="password" layoutX="146.0" layoutY="197.0" onAction="#userLogin" prefHeight="24.0" prefWidth="135.0" style="-fx-background-color: #bcffba; -fx-border-radius: 10px;" />
             <Button id="LoginButton" fx:id="loginButton" layoutX="136.0" layoutY="291.0" mnemonicParsing="false" onAction="#userLogin" style="-fx-background-color: #ff725c;" text="Accedi" />
             <Label fx:id="wrongLogin" layoutX="22.0" layoutY="124.0" prefHeight="18.0" prefWidth="306.0" style="-fx-font-weight: bold; -fx-text-alignment: center;" />
+            <Label layoutX="49.0" layoutY="344.0" text="Non sei ancora registrato?" />
+            <Label fx:id="registerSceneLabel" layoutX="200.0" layoutY="344.0" onMouseClicked="#registerScene" text="Registrati clickando qui." textFill="#0c10ff" underline="true" />
          </children>
       </AnchorPane>
    </center>

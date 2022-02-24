@@ -2,6 +2,9 @@ package application.java.models;
 
 import java.util.Random;
 
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
 public class Utente {
     protected int pk;
     protected String username;
@@ -47,16 +50,13 @@ public class Utente {
 		this.isOperator = isOperator;
 	}
 
-	public Utente(String username, String password, String nome, String cognome, String email, String codiceFiscale,
-			boolean isAdmin, boolean isOperator) {
+	public Utente(String username, String password, String nome, String cognome, String email, String codiceFiscale) {
 		this.username = username;
 		this.password = password;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
 		this.codiceFiscale = codiceFiscale;
-		this.isAdmin = isAdmin;
-		this.isOperator = isOperator;
 	}
 
 	public int getPk() {
